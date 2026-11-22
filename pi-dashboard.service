@@ -1,0 +1,24 @@
+[Unit]
+Description=Pi Read-Only Dashboard (Flask)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# CHANGE THIS to the actual path where you cloned/copied the project,
+# and the user you want it to run as (usually your login user, so
+# systemctl/lsblk work without surprises).
+User=<userName>
+WorkingDirectory=/home/<userName>/pi-dashboard
+ExecStart=/home/<userName>/pi-dashboard/venv/bin/gunicorn -w 1 -b 0.0.0.0:5000 app:app
+Restart=on-failure
+RestartSec=5
+
+# Hardening (safe for a read-only app):
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=read-only
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

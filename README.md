@@ -74,7 +74,7 @@ python3 -m venv venv
 venv/bin/pip install -r requirements.txt gunicorn
 
 # 3. Point the config at YOUR services
-nano config.yaml        # see "Configuration" below
+nano config.yaml        # see "Configuration" below and config.example.yaml for example config file
 
 # 4. Run it
 venv/bin/python app.py

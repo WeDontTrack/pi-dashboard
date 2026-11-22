@@ -1,0 +1,52 @@
+# config.yaml - Pi dashboard configuration
+#
+# services: what appears on the dashboard (systemd units AND docker containers,
+# in one unified list). Fields:
+#   name         - systemd unit name (with or without .service suffix)
+#                  OR docker container name (exactly as `docker ps` shows it)
+#   type         - "systemd" (default if omitted) or "docker"
+#   display_name - friendly label on the dashboard (optional)
+#   enabled      - set false to HIDE an entry without deleting its config
+#
+# ignored_patterns - hide anything matching these glob patterns (applied to
+#   the "name" field, any type), regardless of the enabled flag.
+
+services:
+  # --- systemd services ---
+
+  - name: smbd
+    display_name: "Samba File Sharing"
+    type: systemd
+    enabled: true
+
+  # --- docker containers ---
+  - name: pihole
+   display_name: "Pi-hole"
+   type: docker
+   enabled: true
+
+  - name: nginx-proxy-manager
+   display_name: "Nginx Proxy Manager"
+   type: docker
+   enabled: true
+
+  - name: homeassistant
+   display_name: "Home Assistant"
+   type: docker
+   enabled: true
+
+  # Toggle examples:
+  # - name: watchtower
+  #   display_name: "Watchtower Updater"
+  #   type: docker
+  #   enabled: false          # configured but hidden
+
+  # - name: cups
+  #   display_name: "Printing Service"
+  #   type: systemd
+  #   enabled: false
+
+ignored_patterns:
+  - "*getty*"                # terminal logins - noise
+  - "user@*.service"         # per-user session units - noise
+  - "*.mount"                # mount units
