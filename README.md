@@ -13,9 +13,11 @@ how full your storage drives are.
 No agents, no databases, no cloud, no build toolchain. Eight small files you
 can read in one sitting.
 
-<!-- ## Screenshot
-![Dashboard screenshot](docs/screenshot.png)
-TODO: add screenshot of the Dashboard tab before/after publishing. -->
+
+## Screenshot
+![Dashboard screenshot](assets/images/dashboard-view.png)
+![Services screenshot](assets/images/Services-view.png)
+![Storage screenshot](assets/images/storage-view.png)
 
 ---
 
