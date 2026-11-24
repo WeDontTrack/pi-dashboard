@@ -219,7 +219,7 @@ Browser ──> gunicorn (:5000) ──> Flask app ──> collectors
                                     └─ config.yaml└─ docker CLI ──> socket proxy ──> docker.sock
 ```
 
-For more information see [Design.md](./Desgin.md)
+For more information see [DESIGN.md](./DESIGN.md)
 
 ---
 
